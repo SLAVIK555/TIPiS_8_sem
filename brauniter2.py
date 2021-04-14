@@ -42,17 +42,33 @@ psi3=0
 k=1
 miny1=1000000
 maxy2=-100
+
+m0=m[0]
+m1=m[1]
+m2=m[2]
+n0=n[0]
+n1=n[1]
+
+
 while(True):
-    m0=m[0]
-    m1=m[1]
-    m2=m[2]
-    n0=n[0]
-    n1=n[1]
+#    m0=m[0]
+#    m1=m[1]
+#    m2=m[2]
+#    n0=n[0]
+#    n1=n[1]
 
     #minm=min(m)
     #maxn=max(n)
     minm, ik = min((minm, ik) for (ik, minm) in enumerate(m))
     maxn, jk = max((maxn, jk) for (jk, maxn) in enumerate(n))
+
+    m0 = m0 + source_matr[jk][0]
+    m1 = m1 + source_matr[jk][1]
+    m2 = m2 + source_matr[jk][2]
+
+    n0 = n0 + source_matr[0][ik]
+    n1 = n1 + source_matr[1][ik]
+
 
     if(ik==0):
         psi1=psi1+1
@@ -93,7 +109,7 @@ while(True):
         #print(n)
 
     k=k+1
-    if k==50:
+    if k==10000:
         break
 
     if deltak < 0.001:

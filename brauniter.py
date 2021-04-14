@@ -35,9 +35,26 @@ for j in range(nsize):
 print("K|ik|m0|m1|m2|minm|y2|jk|n0|n1|n2|n3|maxn|y1|miny1|maxy2|deltak")
 print("---------------------------------------------------------------")
 
+fi1=0
+fi2=0
+fi3=0
+fi4=0
+psi1=0
+psi2=0
+psi3=0
+
 k=1
 miny1=1000000
 maxy2=0.0000001
+
+m0=m[0]
+m1=m[1]
+m2=m[2]
+n0=n[0]
+n1=n[1]
+n2=n[2]
+n3=n[3]
+
 while(True):
     m0=m[0]
     m1=m[1]
@@ -50,6 +67,32 @@ while(True):
     #maxn=max(n)
     minm, ik = min((minm, ik) for (ik, minm) in enumerate(m))
     maxn, jk = max((maxn, jk) for (jk, maxn) in enumerate(n))
+
+    m0 = m0 + source_matr[jk][0]
+    m1 = m1 + source_matr[jk][1]
+    m2 = m2 + source_matr[jk][2]
+
+    n0 = n0 + source_matr[0][ik]
+    n1 = n1 + source_matr[1][ik]
+    n2 = n2 + source_matr[2][ik]
+    n3 = n3 + source_matr[3][ik]
+
+
+    if(ik==0):
+        psi1=psi1+1
+    elif(ik==1):
+        psi2=psi2+1
+    elif(ik==2):
+        psi3=psi3+1
+
+    if(jk==0):
+        fi1=fi1+1
+    elif(jk==1):
+        fi2=fi2+1
+    elif(jk==2):
+        fi3=fi3+1
+    elif(jk==3):
+        fi4=fi4+1
     #print(maxn)
     #print(ik)
     #print(jk)
@@ -78,7 +121,7 @@ while(True):
         #print(n)
 
     k=k+1
-    if k==100:
+    if k==10000:
         break
 
     if deltak < 0.001:
